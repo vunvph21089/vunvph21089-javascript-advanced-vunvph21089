@@ -1,3 +1,5 @@
+// Lab1.1
+console.log("Lab1.1:")
 const game = {
     team1: {
         name: "Bayern Munich",
@@ -33,7 +35,6 @@ const game = {
             { player: "PhươngTran", time: 90 }
         ]
     }
-    
 };
 
 // . Tạo 2 mảng cầu thủ cho mỗi đội
@@ -52,10 +53,10 @@ const { team1, draw, team2 } = game.odds;
 // 6. Viết hàm in ra tên các cầu thủ đã ghi bàn và số bàn họ đã ghi
 function printGoals() {
     game.goals.team1.forEach((item) => {
-        console.log(`Bayern Munich:Cầu thủ ${item.player} đã ghi bàn lúc ${item.time} phút !`)
+        console.log(`Bayern Munich: Cầu thủ ${item.player} đã ghi bàn lúc ${item.time} phút !`)
     })
     game.goals.team2.forEach((item) => {
-        console.log(`Real Madrid:Cầu thủ ${item.player} đã ghi bàn lúc ${item.time} phút !`)
+        console.log(`Real Madrid: Cầu thủ ${item.player} đã ghi bàn lúc ${item.time} phút !`)
     })
 }
 printGoals();
@@ -63,8 +64,8 @@ printGoals();
 const winningTeam = Math.min(team1, team2) < draw ? (team1 < team2 ? "Bayern Munich" : "Real Madrid") : "Hòa";
 console.log(`Kết quả: ${winningTeam}!!!`);
 
-//Bài 2:
-console.log("Bài 2:")
+//Lab1.2
+console.log("Lab1.2:")
 console.log("Bayern Munich:")
 function printGoals1() {
     game.goals.team1.forEach((item, index) => {
@@ -73,7 +74,6 @@ function printGoals1() {
         }
     })
 }
-
 
 printGoals1()
 console.log("Real Madrid:")
@@ -87,9 +87,41 @@ function printGoals2() {
 }
 printGoals2()
 console.log('Kết quả trận đấu:')
+let team1Score = 0;
+let team2Score = 0;
+for (let i = 0; i < game.goals.team1.length; i++) {
+    team1Score += 1;
+};
 
+for (let i = 0; i < game.goals.team2.length; i++) {
+    team2Score += 1;
+};
 
+console.log(`Bayern Munich: ${team1Score}`);
+console.log(`Real Madrid: ${team2Score}`);
 
+const { teamBayern, Hoa, teamMadrid } = game.odds;
 
+console.log(`Tỉ lệ thắng của ${game.team1.name}: ${team1}`);
+console.log(`Tỉ lệ hòa: ${draw}`);
+console.log(`Tỉ lệ thắng của ${game.team2.name}: ${team2}`);
 
+const scorers = {};
 
+game.goals.team1.forEach((item) => {
+  if (scorers[item.player]) {
+    scorers[item.player] += 1;
+  } else {
+    scorers[item.player] = 1;
+  }
+});
+
+game.goals.team2.forEach((item) => {
+  if (scorers[item.player]) {
+    scorers[item.player] += 1;
+  } else {
+    scorers[item.player] = 1;
+  }
+});
+
+console.log(scorers);
